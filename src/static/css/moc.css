@@ -1,0 +1,36 @@
+b, strong {
+    font-weight: bold;
+}
+
+.sidebar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    width: 300px;
+    color: #364149;
+    background: #fafafa;
+    border-right: 1px solid rgba(0,0,0,0.07);
+}
+
+.sidebar li{
+    list-style: none;
+}
+
+.sidebar li a{
+        color: #364149;
+    font-weight: normal;
+}
+
+.content{
+    left: 300px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    color: #000;
+    background: #fff;
+}
+
