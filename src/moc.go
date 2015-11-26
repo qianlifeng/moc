@@ -2,12 +2,18 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
-	"strings"
+	"os"
 	"path/filepath"
+	"strings"
+
+	"github.com/codegangsta/cli"
 )
+
+var source string
 
 //Catalog ...
 type Catalog struct {
@@ -19,10 +25,32 @@ type Catalog struct {
 }
 
 func main() {
-	http.HandleFunc("/", getStaticFile)
-	http.HandleFunc("/api/catalog", getCatalog)
-	http.HandleFunc("/api/doc", getDoc)
-	log.Fatal(http.ListenAndServe(":8081", nil))
+	app := cli.NewApp()
+	app.Name = "moc"
+	app.Usage = "markdown doc page"
+	app.Version = "0.1.0"
+	app.Flags = []cli.Flag{
+		cli.StringFlag{
+			Name:  "port,p",
+			Value: "8989",
+			Usage: "server port for moc",
+		},
+		cli.StringFlag{
+			Name:        "source,s",
+			Value:       ".",
+			Usage:       "source folder that moc will serve, default is moc running folder",
+			Destination: &source,
+		},
+	}
+	app.Action = func(c *cli.Context) {
+		http.HandleFunc("/", getStaticFile)
+		http.HandleFunc("/api/catalog", getCatalog)
+		http.HandleFunc("/api/doc", getDoc)
+		fmt.Println("started moc on port " + c.String("port") + "...")
+		log.Fatal(http.ListenAndServe(":"+c.String("port"), nil))
+	}
+
+	app.Run(os.Args)
 }
 
 func getStaticFile(w http.ResponseWriter, r *http.Request) {
@@ -42,7 +70,7 @@ func getStaticFile(w http.ResponseWriter, r *http.Request) {
 }
 
 func getCatalog(w http.ResponseWriter, r *http.Request) {
-	catalog := getFiles("root", ".")
+	catalog := getFiles("root", source)
 	json, _ := json.Marshal(catalog)
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(json)
@@ -83,10 +111,10 @@ func getFiles(name string, path string) Catalog {
 func checkCatalogHasFiles(catalog Catalog) bool {
 	if !catalog.IsDir {
 		return true
-	} else {
-		for _, c := range catalog.Children {
-			checkCatalogHasFiles(c)
-		}
+	}
+
+	for _, c := range catalog.Children {
+		checkCatalogHasFiles(c)
 	}
 
 	return false
