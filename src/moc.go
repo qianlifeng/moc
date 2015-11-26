@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"strings"
+	"path/filepath"
 )
 
 //Catalog ...
@@ -46,14 +47,14 @@ func getFiles(name string, path string) Catalog {
 	files, _ := ioutil.ReadDir(path)
 	for _, f := range files {
 		subCatalog := Catalog{}
-		subCatalog.Name = f.Name()
+		subCatalog.Name = strings.TrimSuffix(f.Name(), filepath.Ext(f.Name()))
 		subCatalog.Path = path + "/" + f.Name()
 		if f.IsDir() {
 			subCatalog.IsDir = true
 			subCatalogs := getFiles(subCatalog.Name, subCatalog.Path)
 			catalog.Children = append(catalog.Children, subCatalogs)
 		} else {
-			if (strings.HasSuffix(f.Name(), "md")) {
+			if strings.HasSuffix(f.Name(), "md") {
 				subCatalog.IsDir = false
 				catalog.Children = append(catalog.Children, subCatalog)
 			}

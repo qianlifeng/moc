@@ -6,20 +6,17 @@
 </head>
 <body>
 <div class="sidebar">
-    <ul>
-        <li class="parent" v-for="item in catalog.Children">
-            <a href="javascript:void(0);" v-on:click="loadDoc(item.Path)">
-                <b>1.</b>{{item.Name}}
-            </a>
-            <ul v-if="item.Children">
-                <li v-for="subItem in item.Children">
-                    <a href="javascript:void(0);" v-on:click="loadDoc(subItem.Path)">
-                        <b>1.1.</b> {{ subItem.Name }}
-                    </a>
-                </li>
-            </ul>
-        </li>
-    </ul>
+    <script type="text/x-template" id="item-template">
+        <ul v-if="model.Children">
+            <li class="parent" v-for="item in model.Children">
+                <a class="doc-link" href="javascript:void(0);" v-on:click="loadDoc($event,item.Path)">
+                    {{item.Name}}
+                </a>
+                <tree :model="item"></tree>
+            </li>
+        </ul>
+    </script>
+    <tree :model="catalog"></tree>
 </div>
 <div class="doc">
     <div class="preview" v-html="doc | marked"></div>

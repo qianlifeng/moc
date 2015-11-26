@@ -2,26 +2,34 @@
     var vue;
 
     function init() {
-        vue = new Vue({
-            el: 'body',
-            data: {
-                catalog: {},
-                doc: ""
-            },
+        Vue.component('tree', {
+            props: ["model"],
+            template: '#item-template',
             methods: {
-                loadDoc: function (path) {
+                loadDoc: function (e, path) {
+                    $(".doc-link").removeClass("active");
+                    $(e.target).addClass("active");
+
                     $.post("/api/doc", {
                         "path": path
                     }, function (data) {
                         vue.doc = data;
                     });
                 }
+            }
+        });
+
+        vue = new Vue({
+            el: 'body',
+            data: {
+                catalog: {},
+                doc: ""
             },
             filters: {
                 marked: marked
             }
-
         });
+
 
         loadCatalog();
     }
