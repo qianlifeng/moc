@@ -38,7 +38,8 @@ b, strong {
 
 .sidebar a:hover,
 .sidebar a.active {
-    color: rgb(0, 140, 255);;
+    color: rgb(0, 140, 255);
+    ;
 }
 
 .sidebar li a {
@@ -64,9 +65,72 @@ b, strong {
     color: #000;
     background: #fff;
 }
+.doc > .header {
+    line-height: 30px;
+    height: 30px;
+    position: absolute;
+    width: 100%;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+.doc > .header .fa-pencil,
+.doc > .header .fa-save{
+  cursor: pointer;
+}
+
+.doc > .body {
+    position: absolute;
+    top: 30px;
+    bottom: 0;
+    width: 100%;
+}
+
+.pull-right {
+    float: right;
+}
+
+.doc .markdown {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    padding: 0;
+    width: 50%;
+    margin: 0;
+}
+
+.doc .markdown > textarea{
+  border: none;
+  border-right:3px solid #f6f6f6;
+  resize: none;
+  outline: none;
+  position: absolute;
+  top:0;
+  bottom:0;
+  width:100%;
+  margin:0;
+  padding:10px;
+  font-size: 14px;
+  font-family: 'Monaco', courier, monospace;
+  box-sizing: border-box;
+}
 
 .doc .preview {
-    padding: 15px;
+    position: absolute;
+    bottom: 0;
+    overflow: auto;
+    top: 0;
+    right: 0;
+    width: 100%;
+    padding:10px;
+    box-sizing: border-box;
+}
+
+.half{
+  width:50% !important;
 }
 
 
+.nano > .nano-content { padding: 10px; }
+.nano > .nano-pane   { background: #888; }
+.nano > .nano-pane > .nano-slider { background: #111; }

@@ -1,0 +1,3 @@
+cd src
+go-bindata -debug static/...
+go run bindata.go moc.go "$@"
