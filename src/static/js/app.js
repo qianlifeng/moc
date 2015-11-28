@@ -42,7 +42,8 @@
                   path:"",
                   markdown:""
                 },
-                config:{}
+                config:{},
+                toggleSidebar: false
             },
             filters: {
                 marked: marked

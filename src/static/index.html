@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/moc.css">
     <link rel="stylesheet" href="/css/fontawesome/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/animate.css">
     <link rel="stylesheet" href="/css/themes/default.css">
 </head>
 <body>
-<div class="sidebar">
+<div class="sidebar animation-transition" v-bind:class="{'sidebar-toggle':toggleSidebar}">
     <script type="text/x-template" id="item-template">
         <ul v-if="model.Children">
             <li class="parent" v-for="item in model.Children">
@@ -20,9 +21,12 @@
     </script>
     <tree :model="catalog"></tree>
 </div>
-<div class="doc">
+<div class="doc animation-transition" v-bind:class="{'doc-toggle':toggleSidebar}">
     <div class="header">
-      <div class="pull-right" v-show="!config.readonly" style="display:none;">
+      <div>
+        <i class="fa fa-align-justify" v-on:click="toggleSidebar=!toggleSidebar"></i>
+      </div>
+      <div v-show="!config.readonly" style="display:none;">
         <i class="fa fa-pencil" v-show="!isEditing" v-on:click="edit()"></i>
         <i class="fa fa-save" v-show="isEditing" v-on:click="save()"></i>
       </div>
