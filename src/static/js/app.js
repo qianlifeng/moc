@@ -2,6 +2,8 @@
     var vue;
 
     function loadDoc(doc){
+      if(doc.Children != null && doc.Children.length > 0) return;
+
       if(vue.isEditing){
         if(confirm("您正在编辑文档，确定放弃修改？")){
             vue.isEditing = false;
@@ -43,7 +45,8 @@
                   markdown:""
                 },
                 config:{},
-                toggleSidebar: false
+                toggleSidebar: false,
+                togglePreview: false
             },
             filters: {
                 marked: marked
@@ -59,6 +62,7 @@
                 }, function (data) {
                     if(data.success){
                         vue.isEditing = false;
+                        vue.togglePreview = false;
                     }
                     else{
                       alert("保存失败：" + data.error);
