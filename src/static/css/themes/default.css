@@ -1,4 +1,4 @@
-.preview.default-theme table {
+.default-theme table {
     width: 100%;
     max-width: 100%;
     margin-bottom: 20px;
@@ -6,16 +6,16 @@
     border-collapse: collapse;
 }
 
-.preview.default-theme th {
+.default-theme th {
     text-align: left;
 }
 
-.preview.default-theme table > tbody > tr:nth-of-type(odd) {
+.default-theme table > tbody > tr:nth-of-type(odd) {
     background-color: #f9f9f9;
 }
 
-.preview.default-theme table th,
-.preview.default-theme table td {
+.default-theme table th,
+.default-theme table td {
     padding: 8px;
     line-height: 1.42857143;
     vertical-align: top;

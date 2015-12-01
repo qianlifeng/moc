@@ -1,0 +1,3 @@
+cd src
+go-bindata static/...
+gox -os="linux" -output="moc"

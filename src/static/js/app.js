@@ -89,7 +89,10 @@
 
       if(parentDoc.Children != null){
         for(var index in parentDoc.Children){
-          return findDocName(parentDoc.Children[index],name);
+          var doc = findDocName(parentDoc.Children[index],name);
+          if(typeof doc !== "undefined"){
+            return doc;
+          }
         }
       }
     }
