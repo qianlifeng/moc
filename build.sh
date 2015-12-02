@@ -1,3 +1,3 @@
 cd src
 go-bindata static/...
-gox -os="linux" -output="moc"
+gox -osarch="linux/386" -output="moc"

@@ -137,6 +137,7 @@ func getFiles(name string, path string) Catalog {
 	catalog.Name = name
 	catalog.Path = path
 	catalog.IsDir = true
+	fmt.Println(path)
 	files, _ := ioutil.ReadDir(path)
 	for _, f := range files {
 		subCatalog := Catalog{}
