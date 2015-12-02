@@ -34,11 +34,10 @@ b, strong {
 
 .sidebar li.parent > ul {
     padding-left: 20px;
-    list-style:none;
+    list-style: none;
 }
 
-.sidebar a:hover,
-.sidebar a.active {
+.sidebar a:hover, .sidebar a.active {
     color: rgb(0, 140, 255);
     ;
 }
@@ -66,6 +65,7 @@ b, strong {
     color: #000;
     background: #fff;
 }
+
 .doc > .header {
     line-height: 50px;
     height: 50px;
@@ -82,20 +82,19 @@ b, strong {
     width: 100%;
 }
 
-
-.doc > .header .fa{
-  cursor: pointer;
-  color:#ccc;
-  user-select: none;
+.doc > .header .fa {
+    cursor: pointer;
+    color: #ccc;
+    user-select: none;
 }
 
-.doc > .header .fa:hover{
-  color:#444;
+.doc > .header .fa:hover {
+    color: #444;
 }
 
 .doc .header >div {
-  display:inline-block;
-  margin-right: 15px;
+    display: inline-block;
+    margin-right: 15px;
 }
 
 .doc .markdown {
@@ -107,21 +106,21 @@ b, strong {
     margin: 0;
 }
 
-.doc .markdown > textarea{
-  border: none;
-  border-right:3px solid #f6f6f6;
-  resize: none;
-  outline: none;
-  width:100%;
-  margin:0;
-  position:absolute;
-  top:0;
-  bottom:0;
-  overflow:auto;
-  padding:10px;
-  font-size: 14px;
-  font-family: 'Monaco', courier, monospace;
-  box-sizing: border-box;
+.doc .markdown > textarea {
+    border: none;
+    border-right: 3px solid #f6f6f6;
+    resize: none;
+    outline: none;
+    width: 100%;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    overflow: auto;
+    padding: 10px;
+    font-size: 14px;
+    font-family: 'Monaco', courier, monospace;
+    box-sizing: border-box;
 }
 
 .doc .preview {
@@ -131,35 +130,54 @@ b, strong {
     top: 0;
     right: 0;
     width: 100%;
-    padding:10px;
+    padding: 10px;
     box-sizing: border-box;
 }
 
 .doc .preview > div {
-  max-width: 80%;
-  margin: auto;
+    max-width: 80%;
+    margin: auto;
 }
 
-.half{
-  width:50% !important;
+.half {
+    width: 50% !important;
 }
 
-.full{
-  width:100% !important;
+.full {
+    width: 100% !important;
 }
 
-.sidebar-toggle{
-  width:0;
+.sidebar-toggle {
+    width: 0;
 }
 
-.doc-toggle{
-  left:0;
+.doc-toggle {
+    left: 0;
 }
 
-.animation-transition{
-  transition: 0.35s;
+.animation-transition {
+    transition: 0.35s;
 }
 
-.sidebar-folder{
-  margin-right:6px;
+.sidebar-folder {
+    margin-right: 6px;
+}
+
+i.sidebar-tool {
+    float: right;
+    display: none;
+    color: #ccc;
+    padding-left: 8px;
+}
+
+.doc-link:hover i.sidebar-tool {
+    display: block;
+}
+
+i.sidebar-tool:hover {
+    color: #444;
+}
+
+.sweet-alert button.cancel {
+    background-color: #d9534f !important;
 }

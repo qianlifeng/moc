@@ -146,7 +146,9 @@ func getFiles(name string, path string) Catalog {
 		if f.IsDir() {
 			subCatalog.IsDir = true
 			subCatalogs := getFiles(subCatalog.Name, subCatalog.Path)
-			catalog.Children = append(catalog.Children, subCatalogs)
+			if subCatalogs.IsDir && len(subCatalogs.Children) > 0 {
+				catalog.Children = append(catalog.Children, subCatalogs)
+			}
 		} else {
 			if strings.HasSuffix(f.Name(), "md") {
 				subCatalog.IsDir = false
