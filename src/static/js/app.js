@@ -101,6 +101,12 @@
             }
         });
 
+        marked.setOptions({
+            highlight: function(code) {
+                return hljs.highlightAuto(code).value;
+            }
+        });
+
         vue = new Vue({
             el: 'body',
             data: {
